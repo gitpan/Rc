@@ -1,0 +1,10 @@
+rc2sh & rc2csh
+
+Deparse
+  remove extra list parens
+
+verify 2nd string of nWord/nQword is unused
+
+hard to believe there are no memory leaks
+
+rc2perl?
