@@ -1,0 +1,9 @@
+#!./perl -w
+
+use strict;
+use Rc qw(walk);
+
+my $bend = ucfirst shift @ARGV;
+require "Rc/$bend.pm";
+
+walk(join('', <>), lc $bend);

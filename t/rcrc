@@ -1,0 +1,23 @@
+if (~ $HOME ()) {
+  echo 'PANIC: $HOME not set'
+  exit
+}
+
+startup=qsg envy=/data/research/u01/bin/envy.pl ENVY_CONTEXT=STARTUP {
+  test -x $envy || {
+    echo 'Envy not found at '^$envy^': PANIC'
+    exit
+  }
+  if (test -s $HOME/.custom/startup.name)
+    startup=`{cat $HOME/.custom/startup.name}
+  if (test -s $HOME/.custom/startup)
+    startup=`{cat $HOME/.custom/startup}
+
+  eval `{$envy load $startup}
+
+  if (~ $ETOP ()) {
+    ETOP=/data/research/u01
+    echo "Environment variable ETOP not set in startup module $startup"
+    echo "Defaulting to $ETOP..."
+  }
+}

@@ -9,13 +9,17 @@ heredoc.c
 input.c
 lex.c
 lib/Rc.pm
+lib/Rc/Csh.pm
 lib/Rc/Deparse.pm
+lib/Rc/Sh.pm
 lib/Rc/Terse.pm
 nalloc.c
 parse.y
+pl/rcconvert
 print.c
 rc.h
 t/expect.trip
+t/rcrc
 t/trip.rc
 t/trip.t
 tree.c

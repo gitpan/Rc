@@ -8,7 +8,7 @@ $level = 0;
 
 sub indent(&) { local $level = $level + 1; shift->() }
 
-sub nl() { "\n" . ' 'x(($level + (@_? $_[0] : 0))*4) }
+sub nl() { "\n" . ' 'x($level*4) }
 
 sub Rc::Node::deparse {
     print $OutputFH shift->dp()."\n";
@@ -109,6 +109,7 @@ sub Rc::Varsub::dp {
 sub _varop {
     my ($op,$k) = @_;
     if ($k->isa('Rc::WordX')) {
+	# maybe wrong for Qword? XXX
 	$op.$k->dp;
     } else {
 	$op.'('.$k->dp.')'

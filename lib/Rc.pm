@@ -3,7 +3,7 @@ package Rc;
 use IO::Handle;
 use base ('Exporter','DynaLoader');
 use vars qw($VERSION @EXPORT_OK $OutputFH);
-$VERSION = '0.01';
+$VERSION = '0.02';
 @EXPORT_OK = qw(walk set_output
 	       $OutputFH);
 $OutputFH = \*STDOUT;
@@ -80,7 +80,14 @@ If you need a synposis, you should start with something easier.
 
 =head1 DESCRIPTION
 
-Isn't written yet.
+The design of this module is similar to the design of L<B>, the perl
+compiler backend.
+
+=head1 WHY RC?
+
+'rc' has a cleaner syntax in comparison to sh or csh.  If your going
+to go through the unpleasantness of learning to program in a shell, it
+might as well be 'rc'.
 
 =head1 SUPPORT
 

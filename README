@@ -13,13 +13,19 @@ I have been disappointed by the lack of new development in Un*x
 shells.  It seems like the world has standardized on bash/tcsh (at
 best) or ksh/csh (at worst).  I believe one cause of this is the
 difficulty of maintaining parallel versions of scripts for each type
-of shell.  The module aims to silence that excuse and enliven shell
-evolution!
+of shell.  This module aims to silence that excuse, at least.
 
 Available at http://www.perl.com/CPAN/authors/id/JPRIT/ !
 
 
 =head1 R!CENT CHANGES
+
+
+** 1998-10-25 RELEASE 0.02
+
+- Skeletal Sh/Csh backends.
+
+- Portability tweaks (thanks cpan-testers!).
 
 
 ** 1998-10-23 RELEASE 0.01

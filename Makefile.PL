@@ -14,6 +14,7 @@ WriteMakefile(
 	      VERSION_FROM => './lib/Rc.pm',
 	      OBJECT => join(' ', qw(footobar.o lex.o input.o nalloc.o heredoc.o
 				     y.tab.o print.o tree.o Rc.o)),
+	      EXE_FILES => ['pl/rcconvert'],
 	      macro => { YACC => 'yacc' }, #XXX
 );
 

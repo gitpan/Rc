@@ -114,8 +114,7 @@ extern void *ealloc(size_t n) {
 	extern void *malloc(size_t);
 	void *p = malloc(n);
 	if (p == NULL) {
-		uerror("malloc");
-		rc_exit(1);
+		panic("malloc");
 	}
 	return p;
 }
@@ -125,8 +124,7 @@ extern void *erealloc(void *p, size_t n) {
 	if (p == NULL)		/* convenience feature */
 		return ealloc(n);
 	if ((p = realloc(p, n)) == NULL) {
-		uerror("realloc");
-		rc_exit(1);
+		panic("realloc");
 	}
 	return p;
 }

@@ -18,6 +18,8 @@ sub indent(&) {
 
 sub nl() { "\n" . ' 'x$level }
 
+sub Rc::Undef::terse_str { '()' }
+
 sub Rc::WordX::terse_str {
     my $n = shift;
     $n->type.'['.$n->string.']'
