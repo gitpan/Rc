@@ -4,7 +4,7 @@ if (~ $HOME ()) {
 }
 
 startup=qsg envy=/data/research/u01/bin/envy.pl ENVY_CONTEXT=STARTUP {
-  test -x $envy || {
+  if (test -x $envy) {
     echo 'Envy not found at '^$envy^': PANIC'
     exit
   }
@@ -21,3 +21,17 @@ startup=qsg envy=/data/research/u01/bin/envy.pl ENVY_CONTEXT=STARTUP {
     echo "Defaulting to $ETOP..."
   }
 }
+
+fn safe_symlink {
+  if (test -f $2 -a '!' -h $2) mv $2 $2^.bak.^$pid
+  rm -f $2
+  ln -s $1 $2
+}
+
+if (test '!' -d $HOME/.custom) mkdir $HOME/.custom
+
+fn maybe_touch_file {
+  if (test '!' -f $1) touch $1
+}
+
+. $ETOP/etc/login/profile.part2

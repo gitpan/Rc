@@ -3,7 +3,7 @@ package Rc;
 use IO::Handle;
 use base ('Exporter','DynaLoader');
 use vars qw($VERSION @EXPORT_OK $OutputFH);
-$VERSION = '0.02';
+$VERSION = '0.03';
 @EXPORT_OK = qw(walk set_output
 	       $OutputFH);
 $OutputFH = \*STDOUT;
@@ -76,7 +76,7 @@ Rc - parser and backends for 'rc' shell
 
 =head1 SYNOPSIS
 
-If you need a synposis, you should start with something easier.
+If you need a synposis, you should start with an easier project.
 
 =head1 DESCRIPTION
 

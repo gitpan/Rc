@@ -3,6 +3,11 @@
 use strict;
 use Rc qw(walk);
 
+if (! @ARGV) {
+    print "rcconvert (deparse|terse|sh|csh) rcscript\n";
+    exit
+}
+
 my $bend = ucfirst shift @ARGV;
 require "Rc/$bend.pm";
 

@@ -1,3 +1,4 @@
+require 5.005;
 use ExtUtils::MakeMaker;
 
 # Parasoft's Insure++!

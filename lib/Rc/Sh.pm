@@ -24,7 +24,7 @@ sub Rc::Word::shp { shift->string }
 
 sub Rc::Qword::shp {
     my $s = shift->string;
-    # quotemeta
+    # quotemeta XXX
     "'$s'"
 }
 
@@ -99,7 +99,9 @@ sub as_var {
     if ($k->isa('Rc::WordX')) {
 	$varname = $k->shp;
 	if ($varname =~ /[:=-?+%\#]/) {
-	    die "potential sh metacharacters found in '$varname'";
+	    die "metacharacters found in var '$varname'";
+	} elsif ($varname eq 'pid') {
+	    return "\$";
 	}
     } else {
 	die "don't know how use $k as a variable"
@@ -163,7 +165,7 @@ sub Rc::Assign::shp {
 sub Rc::Pre::shp {
     my $n=shift;
     my @l;
-    my @s = ("# BLOCK");
+    my @s = ("# LOCALISATION BLOCK");
     while (1) {
 	my $mod = $n->kid(0);
 	if ($mod->isa('Rc::Assign')) {
@@ -174,7 +176,7 @@ sub Rc::Pre::shp {
 	    push @l, $name;
 	    push @s, "$name=".$mod->kid(1)->shp;
 	} elsif ($mod->isa('Rc::Redir')) {
-	    die "Pre($mod) - not yet"; #move down?
+	    die "Pre($mod) - not yet"; #move down? XXX
 	} else {
 	    die "Pre($mod)?";
 	}
@@ -194,6 +196,11 @@ sub Rc::Pre::shp {
 	push @s, "unset $_".nl;
     }
     join('',@s);
+}
+
+sub Rc::Newfn::shp {
+    my $n = shift;
+    $n->kid(0)->shp.'() {'.indent { nl.$n->kid(1)->shp }.nl.'}'
 }
 
 1;

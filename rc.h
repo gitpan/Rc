@@ -14,6 +14,15 @@ typedef long align_t;
 #  endif
 #endif
 
+/* try to find a working va_copy macro */
+#ifndef va_copy
+#  ifdef __va_copy
+#    define va_copy __va_copy
+#  else
+#    define va_copy(to,from)	((to)=(from))
+#  endif
+#endif
+
 #include <sys/types.h>
 
 #if defined(I_STRING) || defined(__cplusplus)
